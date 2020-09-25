@@ -6,4 +6,4 @@ Please use your school email.
 
 You have 20 minutes. 
 
-Next lecture starts at 8:30.
+Next lecture starts at 8:30. [Here](https://meet.google.com/zpa-egtc-hhd) is the invite to the call.
