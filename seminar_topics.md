@@ -11,3 +11,6 @@ TOPICS:
 * `git cherry-pick`
 * `git reflog`
 * debugging with git
+* `git rebase` (-i) 
+* git subtree
+* merging strategies 
