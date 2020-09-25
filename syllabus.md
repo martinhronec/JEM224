@@ -32,9 +32,9 @@ Schedule is only preliminary and subject to the change depending on how does thi
 09:30 pause (10 min)
 09:40 Lecture
 11:10 Lunch break (1h 30min)
-12:40 Lecture
+12:40 Coop game
 ~14:10 pause 
-~14:20 Seminar
+~14:20 Topic seminar
 15:20 pause
 15:30 Final exam
 16:30 done
