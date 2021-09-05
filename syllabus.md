@@ -2,9 +2,9 @@
 
 by **Martin Hronec**
 
-Sep 6th - 9th
+Sep 24-25
 
-10 points - Activity 
+10 points - Activity (during seminars mainly)
 20 points - Quiz
 30 points - Final Exam
 40 points - Project
@@ -16,18 +16,28 @@ Sep 6th - 9th
 
 Schedule is only preliminary and subject to the change depending on how does this remote teaching go.
 
-**Schedule template:**
+**Thursday**
+
 09:00 Lecture 
-~ 10:20 pause (10 min)
-10:30 Lecture 
-~ 11:50 Lunch break (1h 40min)
-13:30 Lecture/Seminar
-~15:00 Done
+~ 10:30 pause (10 min)
+~ 10:40 Lecture 
+12:10 Lunch break (1h 30min
+13:40 Lecture/Seminar
+~15:10 pause (20 min)
+~15:30 Seminar/Lecture
+17:OO done 
 
+**Friday**
+09:00 Quiz
+09:30 pause (10 min)
+09:40 Lecture
+11:10 Lunch break (1h 30min)
+12:40 Coop game
+~14:10 pause 
+~14:20 Topic seminar
+15:20 pause
+15:30 Final exam
+16:30 done
 
-**The last day:** 
-Exam
-Team collaboration with consults
-
-**Sunday (17th of September) 23:59 **
+**Sunday (27th of September) 23:59 **
 Project deadline.
