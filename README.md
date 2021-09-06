@@ -1,5 +1,7 @@
 # Version control with Git (JEM224)
 
+link to the lectures and seminars: https://meet.google.com/bmb-sfpt-opw
+
 by **Martin Hronec**
 
 Sep 6th - 9th
