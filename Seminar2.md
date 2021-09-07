@@ -12,10 +12,9 @@
 9. Pull remote branch (from step 7) to your local machine.
 10. On your local machine, merge the branch you've pulled from remote (from step 7) to your local branch (from step 6).
     * Solve merge conflicts (if any).
-11. On GitHub, merge the branch you've pushed from local (from step 6) to your remote branch (from step 7).
-12. On your local machine, merge the branch from step 10 to your main branch.\
+11. On your local machine, merge the branch from step 10 to your main branch.\
     * Add some new file and commit it.
     * Push your main branch to remote.
-13. Create a pull request of branch from step 11 to the main branch.
-    * Accept it and merge.
-14. Create an issue in your GitHub repository for your colleague.
+12. On GitHub, merge the branch you've pushed from local (from step 6) to your remote branch (from step 7).
+    * (hint: create a pull request first)
+13. Create an issue in your GitHub repository for your colleague.
