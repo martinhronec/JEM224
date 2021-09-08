@@ -1,5 +1,7 @@
 # Version control with Git (JEM224)
 
+link to the morning quiz: https://docs.google.com/forms/d/e/1FAIpQLSdv4QDOpSNkFPa_tfwNHvBegvfzMz1LCMsim0W0q53yp1fPnw/viewform
+
 link to the lectures and seminars: https://meet.google.com/bmb-sfpt-opw
 
 by **Martin Hronec**
