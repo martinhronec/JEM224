@@ -1,8 +1,5 @@
 # Version control with Git (JEM224)
 
-
-link to the final exam: https://docs.google.com/forms/d/e/1FAIpQLSeQ00kZeRHhU5TERQInJfBCXML4NhVLhLowV6VXcTgwiXz7Nw/viewform
-
 link to the lectures and seminars: https://meet.google.com/bmb-sfpt-opw
 
 by **Martin Hronec**
