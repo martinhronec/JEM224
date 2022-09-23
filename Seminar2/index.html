@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="/img/favicon.ico">
-        <title>Version Control with Git</title>
-        <link href="/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/css/font-awesome.min.css" rel="stylesheet">
-        <link href="/css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Seminar 2 - Version Control with Git</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="/js/jquery-1.10.2.min.js" defer></script>
-        <script src="/js/bootstrap.min.js" defer></script>
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="/.">Version Control with Git</a>
+                <a class="navbar-brand" href="..">Version Control with Git</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,19 +34,19 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="/." class="nav-link">Home</a>
+                                <a href=".." class="nav-link">Home</a>
                             </li>
                             <li class="navitem">
-                                <a href="/part1/" class="nav-link">Part1</a>
+                                <a href="../part1/" class="nav-link">Part1</a>
                             </li>
                             <li class="navitem">
-                                <a href="/Seminar1/" class="nav-link">Seminar 1</a>
+                                <a href="../Seminar1/" class="nav-link">Seminar 1</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Seminar 2</a>
                             </li>
                             <li class="navitem">
-                                <a href="/Seminar2/" class="nav-link">Seminar 2</a>
-                            </li>
-                            <li class="navitem">
-                                <a href="/git_installation/" class="nav-link">Git installation</a>
+                                <a href="../git_installation/" class="nav-link">Git installation</a>
                             </li>
                         </ul>
 
@@ -56,6 +56,16 @@
                                 <i class="fa fa-search"></i> Search
                             </a>
                         </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../Seminar1/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../git_installation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
                     </ul>
                 </div>
             </div>
@@ -63,15 +73,53 @@
 
         <div class="container">
             <div class="row">
-
-    <div class="row-fluid">
-      <div id="main-content" class="span12">
-        <h1 id="404-page-not-found" style="text-align: center">404</h1>
-        <p style="text-align: center"><strong>Page not found</strong></p>
-      </div>
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
     </div>
 
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
 
+<ol>
+<li>Create new (public) repository on GitHub.</li>
+<li>Clone this repository to your local machine.</li>
+<li>Make one commit locally.</li>
+<li>Get difference between state of your local and remote repos.</li>
+<li>Push your changes back to the remote.</li>
+<li>Create new branch locally.<ul>
+<li>Add new file and commit it.</li>
+</ul>
+</li>
+<li>Create new branch on GitHub (named differently than the branch you've created in the previous step). <ul>
+<li>Add new file named the same as file created locally in step 6. (still in GitHub)</li>
+<li>Make content of the file "conflicting" with content of the file created locally in step 6.</li>
+</ul>
+</li>
+<li>Push local branch (from step 6) to the remote. </li>
+<li>Pull remote branch (from step 7) to your local machine.</li>
+<li>On your local machine, merge the branch you've pulled from remote (from step 7) to your local branch (from step 6).<ul>
+<li>Solve merge conflicts (if any).</li>
+</ul>
+</li>
+<li>On your local machine, merge the branch from step 10 to your main branch.\<ul>
+<li>Add some new file and commit it.</li>
+<li>Push your main branch to remote.</li>
+</ul>
+</li>
+<li>On GitHub, merge the branch you've pushed from local (from step 6) to your remote branch (from step 7).<ul>
+<li>(hint: create a pull request first)</li>
+</ul>
+</li>
+<li>Create an issue in your GitHub repository for your colleague.</li>
+</ol></div>
             </div>
         </div>
 
@@ -80,11 +128,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "/",
+            var base_url = "..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="/js/base.js" defer></script>
-        <script src="/search/main.js" defer></script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
