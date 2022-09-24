@@ -3,11 +3,11 @@ site_name: Version Control with Git
 docs_dir: docs
 nav:
     - Home: README.md
-    - Schedule: schedule.md
     - Lectures: Lectures.md
     - Seminars: Seminars.md
     - Git installation: git_installation.md
-    - Project topics: final_projects_topics.md
+    - Project topics: final_project_topics.md
+    - Schedule: schedule.md
 
 theme:
   name: material
