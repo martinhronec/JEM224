@@ -1,0 +1,2016 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.5.3">
+    
+    
+      
+        <title>Lectures - Version Control with Git</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.7a952b86.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.cbb835fc.min.css">
+        
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#version-control-with-git-part-1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Version Control with Git" class="md-header__button md-logo" aria-label="Version Control with Git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Version Control with Git
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lectures
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Version Control with Git" class="md-nav__button md-logo" aria-label="Version Control with Git" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Version Control with Git
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../schedule/" class="md-nav__link">
+        Schedule
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Lectures
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Lectures
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-version-control" class="md-nav__link">
+    What is a version control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-git" class="md-nav__link">
+    What is Git?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is Git?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-installation-setup" class="md-nav__link">
+    Git installation &amp; setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-interface" class="md-nav__link">
+    Command line interface
+  </a>
+  
+    <nav class="md-nav" aria-label="Command line interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash-basics" class="md-nav__link">
+    Bash basics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ides" class="md-nav__link">
+    IDEs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gits-data-model" class="md-nav__link">
+    Git's data model
+  </a>
+  
+    <nav class="md-nav" aria-label="Git's data model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objects-and-content-addressing" class="md-nav__link">
+    Objects and content-addressing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Seminars/" class="md-nav__link">
+        Seminars
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../git_installation/" class="md-nav__link">
+        Git installation
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../final_projects_topics.md" class="md-nav__link">
+        Project topics
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-a-version-control" class="md-nav__link">
+    What is a version control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-git" class="md-nav__link">
+    What is Git?
+  </a>
+  
+    <nav class="md-nav" aria-label="What is Git?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git" class="md-nav__link">
+    Git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-installation-setup" class="md-nav__link">
+    Git installation &amp; setup
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#command-line-interface" class="md-nav__link">
+    Command line interface
+  </a>
+  
+    <nav class="md-nav" aria-label="Command line interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bash-basics" class="md-nav__link">
+    Bash basics
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ides" class="md-nav__link">
+    IDEs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gits-data-model" class="md-nav__link">
+    Git's data model
+  </a>
+  
+    <nav class="md-nav" aria-label="Git's data model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#objects-and-content-addressing" class="md-nav__link">
+    Objects and content-addressing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="version-control-with-git-part-1">Version control with Git - Part 1</h1>
+<p>by <strong>Martin Hronec</strong></p>
+<h2 id="what-is-a-version-control">What is a <em>version control</em></h2>
+<ul>
+<li><em>version control</em> is a method for tracking changes to source code</li>
+<li>from Wikipedia: "the management of changes to documents, computer programs, large web sites, and other collections of information."</li>
+<li>
+<p>it enables effective collaboration</p>
+<ul>
+<li>who wrote this part of code?</li>
+<li>when was this part of code last edited?</li>
+<li>why/when did it all stop working?</li>
+</ul>
+</li>
+<li>
+<p>where do we see version control? </p>
+</li>
+</ul>
+<h2 id="what-is-git">What is <em>Git</em>?</h2>
+<ul>
+<li>in XKCD words:</li>
+</ul>
+<p><img alt="in XKCD words" src="https://imgs.xkcd.com/comics/git.png" /></p>
+<ul>
+<li>we will try to do it differently!<ul>
+<li><em>understanding</em>" instead of just <em>memorizing</em></li>
+</ul>
+</li>
+<li>we will approach Git  bottom-up, i.e. starting with it's data model<ul>
+<li>learning Git top-down (starting with its interface / command-line interface) can lead to a lot of confusion</li>
+</ul>
+</li>
+</ul>
+<hr />
+<h3 id="git">Git</h3>
+<ul>
+<li>a revision control system, a program to manage your source code history</li>
+<li>standard for version control</li>
+<li>can be used for:<ul>
+<li>small projects with one developer</li>
+<li>huge projects with thousands of contributors
+        * e.g. working remotely by hosting a code on public servers like GitHub, GitLab, etc.</li>
+</ul>
+</li>
+<li>a free open source system</li>
+<li>available on Unix based platforms, Windows and macOS</li>
+<li>
+<p>has a distributed architecture</p>
+<ul>
+<li>each person contributing to a repository has full copy of the repository</li>
+</ul>
+</li>
+<li>
+<p><strong>majority of state-of-the-art software projects are under Git!</strong></p>
+<ul>
+<li>explore directly on GitHub <a href="https://github.com/trending?since=monthly">here</a><ul>
+<li><a href="https://github.com/CompVis/stable-diffusion">stable-diffusion</a></li>
+<li>Python's <a href="https://github.com/pandas-dev/pandas">pandas</a></li>
+<li><a href="https://github.com/tensorflow/tensorflow">tensorflow</a></li>
+<li>editor <a href="https://github.com/microsoft/vscode">Visual Studio Code</a></li>
+<li><a href="https://github.com/kubernetes/kubernetes">kubernetes</a></li>
+<li>and much more!</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>note: what is GitHub?</p>
+<ul>
+<li>provides hosting for software development and version control using Git</li>
+<li>from an youtube comment on one of the Git tutorials:
+    &gt;Git is related to Github the same way porn is related to Pornhub.</li>
+</ul>
+</li>
+<li>
+<p>created in 2005 by Linus Torvalds to help manage the task of developing the Linux kernel (<a href="https://www.linuxjournal.com/content/git-origin-story">a cool Git origin story</a>)</p>
+</li>
+</ul>
+<h2 id="git-installation-setup">Git installation &amp; setup</h2>
+<ul>
+<li>follow <a href="../git_installation/">instructions</a></li>
+</ul>
+<h2 id="command-line-interface">Command line interface</h2>
+<ul>
+<li>
+<p><strong>a shell</strong> is a user interface for access to an operating system's services</p>
+<ul>
+<li>it is named a shell because it is the outermost layer around the operating system</li>
+</ul>
+</li>
+<li>
+<p>shells use </p>
+<ul>
+<li>command-line interface (CLI)<ul>
+<li>commands (and syntax) knowledge necessery</li>
+<li>shell-specific scripting language (like bash)</li>
+<li>bash is a popular default shell on Linux and macOS<ul>
+<li>bash is an acronym for <em>Bourne Again Shell</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>graphical user interface (GUI)<ul>
+<li>easy-to-use with certain disadvantages</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>at its core, Git is a set of command line utility programs that are designed to execute on a Unix style command-line environment</p>
+</li>
+<li>operating systems like Linux and macOX both include built-in Unix command line terminals</li>
+<li>Git bash is an application for Microsoft Windows environments which provides an emulation layer for a Git command line experience</li>
+<li>Git Bash is a package that installs Bash, some common bash utilities and Git on a Windows machine<ul>
+<li>it has the same operations as a standard Bash experience</li>
+</ul>
+</li>
+<li>Git bash comes included as part of the Git for Windows package</li>
+</ul>
+<h3 id="bash-basics">Bash basics</h3>
+<ul>
+<li>
+<p><code>echo</code> returns whatever you type at the shell prompt</p>
+</li>
+<li>
+<p><code>pwd</code> prints the current working directory</p>
+<ul>
+<li>the current working directory is the default place where the shell commands will look for data files </li>
+</ul>
+</li>
+<li>the UNIX file hierarchy has a tree structure<ul>
+<li>to reach a particular folder or file, we need to traverse certain paths within this tree structure</li>
+<li>paths separate every node of the above structure with the help of a slash character - <code>/</code></li>
+</ul>
+</li>
+<li>
+<p><code>ls &lt;directory&gt;</code> to list contents of a directory</p>
+<ul>
+<li><code>ls &lt;directory&gt; -a</code> to list all hidden files</li>
+</ul>
+</li>
+<li>
+<p><code>cd &lt;directory&gt;</code> changes the active directory to the path specified</p>
+<ul>
+<li><code>cd ..</code> changes to the parent directory</li>
+<li><code>cd</code> changes to the HOME directory</li>
+</ul>
+</li>
+<li>
+<p><code>mkdir</code> creates a folder</p>
+</li>
+<li><code>touch</code> creates an empty file</li>
+<li>
+<p><code>rm</code> delete a file</p>
+<ul>
+<li><code>rm -r *</code> deletes a folder with all its contents</li>
+</ul>
+</li>
+<li>
+<p>the redirection operator <code>&gt;</code> will redirect the normal output initially intended to be  on stdout and print it directly into the file.</p>
+<ul>
+<li><code>echo "Git is awesome." &gt; file.txt</code> </li>
+<li><code>cat</code> reads a file and outputs its content</li>
+</ul>
+</li>
+</ul>
+<h2 id="ides">IDEs</h2>
+<ul>
+<li>integrated development environment</li>
+<li>use some!</li>
+<li>standard features:<ul>
+<li>text editor</li>
+<li><em>code completion</em></li>
+<li>linting</li>
+<li>debugger</li>
+</ul>
+</li>
+<li>lot of options, but the best (IMHO) is hands down <a href="https://code.visualstudio.com">Visual Studio Code</a></li>
+</ul>
+<h2 id="gits-data-model">Git's data model</h2>
+<pre class="mermaid"><code>
+    gitGraph
+       commit id: "1"
+       commit id: "2"
+       branch nice_feature
+       checkout nice_feature
+       commit id: "3"
+       checkout main
+       commit id: "4"
+       checkout nice_feature
+       branch very_nice_feature
+       checkout very_nice_feature
+       commit id: "5"
+       checkout main
+       commit id: "6"
+       checkout nice_feature
+       commit id: "7"
+       checkout main
+       merge nice_feature id: "customID" tag: "customTag" type: REVERSE
+       checkout very_nice_feature
+       commit id: "8"
+       checkout main
+       commit id: "9"
+</code></pre>
+<ul>
+<li>version control is a method for tracking changes to source code</li>
+<li>modelling history of a collection of files and folders within some top-level directory through relating snapshots</li>
+<li>
+<p>to be a Git repository, we need objects and system for naming those objects</p>
+<ul>
+<li>refs is the system for naming those objects</li>
+</ul>
+</li>
+<li>
+<p>a history is a <a href="">directed acyclic graph (DAG)</a> of snapshots</p>
+<ul>
+<li>each snapshot refers to a set of "parents (previous snapshots)<ul>
+<li>why set of "parent" snapshots instead of just one "parent" snapshot?</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>in Git's terms:        </p>
+<ul>
+<li>these snapshots are called <strong>commits</strong></li>
+<li>a file is called a <strong>blob</strong> (a bunch of bytes)</li>
+<li>a directory is called a <strong>tree</strong><ul>
+<li>maps names to blobs or trees (directories can contain other directories)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>a "snapshot" is basically the top-level tree in your project</p>
+</li>
+<li>
+<p>ASCII art for pedagogical purposes:</p>
+</li>
+</ul>
+<p><code>root_folder (tree)
+|
++- folder (tree)
+|  |
+|  + file.txt (blob, contents = "A barber learns to shave by shaving fools.")
+|
++- another_file.txt (blob, contents = "I don't give a git.")</code></p>
+<h3 id="objects-and-content-addressing">Objects and content-addressing</h3>
+<ul>
+<li>an "object" is a blob, tree, commit</li>
+<li>in Git data store, all objects are content-addressed by their <strong>SHA-1 hash</strong><ul>
+<li>moving to SHA-256, see <a href="https://git-scm.com/docs/hash-function-transition/">collision</a></li>
+<li>TODO: mode details (http://www.sha1-online.com/ , https://www.geeksforgeeks.org/difference-between-sha1-and-sha256/)</li>
+</ul>
+</li>
+</ul>
+<h3 id="references">References</h3>
+<ul>
+<li>
+<p>all snapshots can be identified by their SHA-1 hash</p>
+<ul>
+<li>inconvevient - try to remember strings of 40 hexadecimal characters</li>
+<li>Git's solution: readeble names for SHA-1 hashes - <strong>references</strong></li>
+</ul>
+</li>
+<li>
+<p>references are pointers to commits</p>
+</li>
+<li>objects are immutable (building blocks)</li>
+<li>
+<p>references are mutable (can be updated to point to a new commit)</p>
+<ul>
+<li>e.g. <code>master</code> reference - typically pointing to the the main "codebase"</li>
+</ul>
+</li>
+<li>
+<p>we want a notion of "where we currently are" (e.g. in the history of the project)</p>
+<ul>
+<li>when we take a new snapshot, we know what it is related to</li>
+<li>"where we are/what are we looking at" is a special reference called <strong>HEAD</strong></li>
+</ul>
+</li>
+</ul>
+<h1 id="version-control-with-git-part-2">Version control with Git - Part 2</h1>
+<h2 id="git-repository">Git repository</h2>
+<ul>
+<li>a Git <strong>repository</strong> is the data objects and references</li>
+<li>
+<p>all Git stores are objects and references</p>
+<ul>
+<li>easy</li>
+</ul>
+</li>
+<li>
+<p>all git commands map to some manipulation of the DAG which captures the relation between snapshots (history and development) </p>
+<ul>
+<li>e.g. by adding objects and adding/updating references</li>
+</ul>
+</li>
+<li>
+<p>wherenever you're typing in any command, think about what manipulation the command is making to the underlying graph data structure</p>
+</li>
+<li>similarly, if you're trying to make a particular kind of change to the DAG, there is probably a command corresponding to it</li>
+</ul>
+<h3 id="initializing-repositories">Initializing repositories</h3>
+<ul>
+<li>
+<p>2 main options to create a Git repository:</p>
+<ul>
+<li><code>git init</code> </li>
+<li><code>git clone https://github.com/martinhronec/version_control_IES.git</code><ul>
+<li>we will talk about this option around Git remotes</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>git init</code> creates a new subdirectory named <em>.git</em> that contains all information for version control</p>
+<ul>
+<li>converts an existing (unversioned) project</li>
+<li>initiates a new empty repository</li>
+<li>we will look inside later when we are more familiar with working concepts </li>
+</ul>
+</li>
+</ul>
+<h3 id="lifecycle-of-a-fileblob">Lifecycle of a file/blob</h3>
+<ul>
+<li>each file in the working directory can be in one of two states: <ul>
+<li>tracked<ul>
+<li>files that were in the last snapshot - can be <em>modified, unmodified or untracked</em></li>
+</ul>
+</li>
+<li>untracked<ul>
+<li>any files that weren't in the last snapshot are are not in the staging area (explained later)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>a created file will not be automatically untracked until you add it<ul>
+<li>when you clone a repository (instead of <code>git init</code>-ing it, all of your files will be tracked and unmodified </li>
+</ul>
+</li>
+</ul>
+<p><img alt="From Git pro book" src="../pictures/file_lifecycle.png" /></p>
+<h3 id="status-of-the-filesrepository">Status of the files/repository</h3>
+<ul>
+<li>
+<p><code>git status</code> shows which files are in which state</p>
+</li>
+<li>
+<p>create a new file, e.g. hello_world.txt</p>
+<ul>
+<li>hello_world.txt is <em>untracked</em></li>
+<li>Git won't start tracking it until we explicitly tell it to</li>
+</ul>
+</li>
+<li>to start tracking the hello_world.txt file, use <code>git add hello_world.txt</code><ul>
+<li>run <code>git status</code> again to see that file is staged now</li>
+</ul>
+</li>
+<li>to see what is staged (what will commited/snapshotted next,<code>git diff --cached</code> or <code>git diff --staged</code> <ul>
+<li><code>git diff</code> shows you the exact lines added and removed<ul>
+<li>can be used between different objects, e.g. branches as we will see later on</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>git diff</code> by itself doesn’t show all changes made since your last commit—only changes that are still unstaged. </li>
+</ul>
+<h3 id="main-sections-of-a-git-project">Main sections of a Git project</h3>
+<p><img alt="." src="../pictures/git_main_sections.PNG" /></p>
+<h3 id="commiting-the-changes">Commiting the changes</h3>
+<ul>
+<li><code>git commit</code> as equivalent of "saving"<ul>
+<li>only staged things go to the commit</li>
+</ul>
+</li>
+<li>typing only <code>git commit</code> will launch a selected (in config) file editor<ul>
+<li>write <code>git commit &lt;file-to-commit&gt; -m "Commit message"</code> if you want to skip the detailed message</li>
+</ul>
+</li>
+<li>
+<p>the commit shows some self-info</p>
+<ul>
+<li>which branch you committed to (master)<ul>
+<li>branch is an "independent" line of development - more later</li>
+</ul>
+</li>
+<li>what SHA-1 checksum it has</li>
+<li>how many files were changed (and statistics about lines added and removed in the commit)</li>
+</ul>
+</li>
+<li>
+<p>only staged files are commited</p>
+<ul>
+<li>anything not staged is just chilling there modified</li>
+</ul>
+</li>
+<li>
+<p>every commit (you make), is a snapshot of your project</p>
+<ul>
+<li>you can revert to it later</li>
+</ul>
+</li>
+<li>
+<p>if you want to skip the staging area, just use `git commit -a -m "<commit-message>"</p>
+</li>
+<li>compare what happened to the actions shown on the previous picture "File Status Lifecycle."</li>
+</ul>
+<h3 id="the-commit-history">The commit history</h3>
+<ul>
+<li><code>git log</code> <ul>
+<li>with no arguments, <code>git log</code> lists the commits made in that repository in reverse chronological order. </li>
+<li>it lists each commit with its SHA-1 checksum, the author's name and e-mail, the date written, and the commit message</li>
+</ul>
+</li>
+<li>plenty of arguments with <code>git log</code><ul>
+<li><code>git log -p -2</code> shows the diff introduced in each commit, <code>-2</code> limits the output to only th e last two entries</li>
+<li><code>git log --stat</code> shows some abbreviated stats for each commit, e.g. list of modified files, how many files were changed and how many lines in those files were added and removed</li>
+<li><code>git log --pretty=oneline</code>, </li>
+<li><code>git log --graph</code>       </li>
+</ul>
+</li>
+<li>in practice, developers typically use some nice graphing extension/utility, e.g. </li>
+</ul>
+<h3 id="three-trees-of-git">Three trees of Git</h3>
+<ul>
+<li>we've just seen the basic (committing) part of the Git workflow</li>
+<li>
+<p>try understand the Git's internal state management system first, everything should be easier later</p>
+</li>
+<li>
+<p><strong>the working directory</strong> is in sync with the local filesystem</p>
+<ul>
+<li>it represents the immediate changes made to content in files and directories</li>
+<li>can be seen using <code>git status</code> (or just by looking at the files and folders the way you are used to)</li>
+</ul>
+</li>
+<li>the <strong>staging index</strong> is tracking working directory changes, that have been promoted with <code>git add</code> (to be stored in the next commit)<ul>
+<li>a complex internal caching mechanism hidden from the user</li>
+</ul>
+</li>
+<li>
+<p>to accurately see the state of the staging index, use <code>git ls-files</code> </p>
+<ul>
+<li>a debugging tool for inspecting the state of the staging index tree</li>
+<li><code>-s</code> stands for the <code>--stage</code> option</li>
+</ul>
+</li>
+<li>
+<p><strong>the commmit history</strong>     </p>
+</li>
+<li>
+<p>SHA-1 hash of the staging index is different than the one in the Commit History</p>
+</li>
+<li>the git status shows differences between the commit history and the staging index. <ul>
+<li>after adding file (including to the staging area, its hash changes </li>
+</ul>
+</li>
+</ul>
+<h1 id="version-control-with-git-part-3">Version control with Git - Part 3</h1>
+<h2 id="example-of-gits-data-model">Example of Git's data model</h2>
+<ul>
+<li>
+<p>after the first commit:</p>
+<ul>
+<li>Git checksums each subdirectory (only the root project directory in this case)</li>
+<li>stores objects (one file in our case) in the Git repository</li>
+<li>then it creates a commit object that has the metadata and a pointer to the root project tree so it can re-create that snapshot when needed</li>
+</ul>
+</li>
+<li>
+<p>repository now contains 3 objects:</p>
+<ul>
+<li>one blob for the content of your file, </li>
+<li>one tree that lists the contents of the directory and specifies which file names are stored as which blobs </li>
+<li>one commit with the pointer to that root tree and all the commit metadata</li>
+</ul>
+</li>
+</ul>
+<p><img alt="caption" src="../pictures/single_commit_detailed.png" /></p>
+<ul>
+<li>we will use <a href="https://github.com/hoduche/git-graph">git-graph</a> to quickly show the underlying data model of our repository<ul>
+<li>see the github page for the color reference</li>
+</ul>
+</li>
+<li>e.g.</li>
+</ul>
+<p><img alt="caption" src="../pictures/2020_09_22_19_37_48_git_graph.dot.png" /></p>
+<ul>
+<li>note that this graph does not correspond to the above one (different hashes)</li>
+</ul>
+<h3 id="2-commits-repository-representation">2-commits repository representation</h3>
+<ul>
+<li>if you make some changes and commit againt, the next commit stores a pointer to the commit that came immediately before it</li>
+</ul>
+<p><img alt="caption" src="../pictures/2020_09_22_19_37_51_git_graph.dot.png" /></p>
+<h3 id="3-commits-repository-representation">3-commits repository representation</h3>
+<p><img alt="caption" src="../pictures/2020_09_22_19_37_54_git_graph.dot.png" /></p>
+<h2 id="git-plumbing-and-porcelain">Git - plumbing and porcelain</h2>
+<ul>
+<li>originally Git was a toolkit for rather than a "user-friendly" VCS<ul>
+<li>=&gt; it has a number of "low-level" subcommands </li>
+</ul>
+</li>
+<li>low-level commands are generally called "plumbing' commands</li>
+<li>
+<p>more "user-friendly" commands are called "porcelain" commands</p>
+</li>
+<li>
+<p>many of these commands aren't meant to be used manually on the command line</p>
+<ul>
+<li>rather used as building blocks for new tools and custom scripts</li>
+</ul>
+</li>
+<li>
+<p>when you create a new Git repository, Git creates a .git directory</p>
+<ul>
+<li>this is where almost everything that Git stores and manipulates resides</li>
+<li>to back up or clone your repository, copy this single directory</li>
+</ul>
+</li>
+<li>
+<p>now we will talk about what you can see in a repository</p>
+</li>
+</ul>
+<h3 id="git-objects">Git objects</h3>
+<ul>
+<li>
+<p>Git is a content-addressable filesystem</p>
+<ul>
+<li>Git is a simple key-value data store </li>
+</ul>
+</li>
+<li>
+<p>contents of the .git folder:</p>
+<ul>
+<li><em>config</em> file contains your project-specific configuration options</li>
+<li><em>info</em> directory keeps a global exclude file for ignored patterns that you don't want to track in a .gitignore file</li>
+<li><em>hooks</em> directory contains your client-side or server-side hook scripts</li>
+<li><strong>HEAD</strong> points to the branch you currently have checked out</li>
+<li><strong>objects</strong> directory stores all the content for your database</li>
+<li><strong>refs</strong> directory stores pointers into commit objects </li>
+<li><strong>index</strong> file is where Git stores your staging area</li>
+</ul>
+</li>
+</ul>
+<h3 id="hashing">Hashing</h3>
+<ul>
+<li><code>git hash-object</code> takes some data and stores it in your .git/objects directory (the object database) and gives you back the unique key that now refers to that data object</li>
+<li>with <code>git init</code>, Git initializes the objects directory and creates a pack and info subdirectories in it, but there are no regular files</li>
+<li>the output from the above command is a 40-character checksum hash<ul>
+<li>this is a SHA-1 hash - a checksum of the content you're storing plus a header</li>
+</ul>
+</li>
+<li>
+<p>in your objects directory, you can see that it now contains a file for that new content</p>
+<ul>
+<li>Git stores data as a single file per piece of content</li>
+</ul>
+</li>
+<li>
+<p>once you have content in your object database, you can examine that content with the <code>git cat-file</code></p>
+<ul>
+<li>a Swiss army knife command for inspecting Git objects </li>
+<li><code>-p</code> : first figure out the type of content, then display it appropriately </li>
+<li><code>-t</code> : tells you the object type of any object in Git given its SHA-1 key</li>
+</ul>
+</li>
+<li>writing into file, saving it, hashing it and then saving new content and hashing it leads to object database having both versions of this new file</li>
+<li>we can delete local copy of the created file <ul>
+<li>and use Git to retrieve it from the objects database</li>
+</ul>
+</li>
+<li>remembering the SHA-1 key for each version of your file isn't practical<ul>
+<li>plus you are not storing the filename in your system, just the content</li>
+<li>this object type is called a <em>blob</em></li>
+</ul>
+</li>
+</ul>
+<h3 id="removing-files">Removing files</h3>
+<ul>
+<li>not a "plumbing command"</li>
+<li>
+<p>to remove a file from Git, remove it from your tracked files </p>
+<ul>
+<li>more accurately: remove it from the staging area and commit</li>
+<li><code>git rm &lt;file&gt;</code> stages the file's removal</li>
+<li>next time you commit, the file will be gone and no longer tracked</li>
+</ul>
+</li>
+<li>
+<p>another usecase:</p>
+<ul>
+<li>keep the file in the working tree, but remove it from the staging area (i.e. making it untracked)</li>
+<li><code>git rm --cached &lt;file&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>there is no option to remove a file from only the working directory</p>
+</li>
+<li>
+<p>use <code>git rm -n</code> for a "dry run" - shows files will be removed</p>
+</li>
+<li>
+<p>files, directories, and file-glob patterns can be passed to the <code>git rm</code> command </p>
+<ul>
+<li>to remove a directory, use <code>git rm -r</code> which stands  for "recursive"</li>
+</ul>
+</li>
+<li>
+<p><code>git rm</code> does not remove branches (more when talking about branches)</p>
+</li>
+<li>
+<p>why not simply deleting the file/folder on the file-system level?</p>
+<ul>
+<li>you can and then stage the change and commit</li>
+<li><code>git rm</code> is convenience</li>
+</ul>
+</li>
+</ul>
+<h3 id="moving-files">Moving files</h3>
+<ul>
+<li>
+<p>Git doesn't explicitly track file movement</p>
+<ul>
+<li>if you rename a file in Git no metadata is stored in Git that tells it you renamed the file</li>
+</ul>
+</li>
+<li>
+<p>to rename a file you can run</p>
+<ul>
+<li><code>git mv &lt;file_from&gt; &lt;file_to&gt;</code><ul>
+<li>you will see in <code>git status</code> that Git considers it a renamed file</li>
+</ul>
+</li>
+<li>it is equivalent to running something like this:<ul>
+<li><code>mv &lt;file_from&gt; &lt;file_to&gt;</code>
+  <code>git rm &lt;file_from&gt;</code>
+  <code>git add &lt;file_to&gt;</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="ignoring-files-gitignore">Ignoring files - <code>.gitignore</code></h3>
+<ul>
+<li>when I have shown you git-graphs, you might have noticed the untracked files in my repository<ul>
+<li>these were precisely the produced graphs we might wish to ignore</li>
+</ul>
+</li>
+<li>
+<p>a class of files we do not want to add but also do not want it being shown as untracked</p>
+<ul>
+<li>e.g. data, log files, files from the build</li>
+</ul>
+</li>
+<li>
+<p>set up a <code>.gitignore</code> file before you start your commiting spree</p>
+</li>
+<li>
+<p>some rules:</p>
+<ul>
+<li>blank lines or lines starting with # are ignored</li>
+<li>standard glob patterns work</li>
+<li>you can end patterns with a forward slash (/) to specify a directory</li>
+<li>you can negate a pattern by starting it with an exclamation point (!)</li>
+</ul>
+</li>
+<li>
+<p><em>glob patterns</em> are like simplified regular  expressions that shells use</p>
+<ul>
+<li>An asterisk (*) matches zero or more characters</li>
+<li>[abc] matches any character inside the brackets (i.e. a, b, or c)</li>
+<li>A question mark matches a single character</li>
+<li>[0-9] matches any character betweent the start and the end</li>
+</ul>
+</li>
+<li>
+<p>there are templates of <code>.gitignore</code> files available for most of the languages and types of the projects, see option on GitHub when creating a repository</p>
+</li>
+</ul>
+<h1 id="version-control-with-git-part-4">Version control with Git - Part 4</h1>
+<h2 id="undoing-changes">Undoing changes</h2>
+<ul>
+<li>
+<p><code>git log</code> to show history </p>
+<ul>
+<li><code>git log --graph</code></li>
+</ul>
+</li>
+<li>
+<p>let's discuss the available 'undo' Git strategies and commands</p>
+<ul>
+<li><code>git reset</code></li>
+<li><code>git revert</code></li>
+<li><code>git checkout</code></li>
+<li>and more</li>
+</ul>
+</li>
+<li>
+<p>Git does not have a traditional 'undo ' system</p>
+</li>
+<li><strong>careful, you can't always undo some of the undos!</strong></li>
+</ul>
+<h2 id="checkout">Checkout</h2>
+<ul>
+<li>
+<p>we've looked at the history and we've taken the file and modified it</p>
+<ul>
+<li>we can use the history besides reading the messages</li>
+</ul>
+</li>
+<li>
+<p><code>git checkout</code></p>
+<ul>
+<li>allows you to do many things </li>
+<li>one thing it allows you to do is to move in your version history</li>
+</ul>
+</li>
+<li>
+<p>give <code>git checkout &lt;commit id&gt;</code> (you can provide just the first couple of characters)</p>
+<ul>
+<li>it will change the state of the current working directory to how it was at that commit </li>
+</ul>
+</li>
+<li>
+<p><code>git checkout &lt;commit hash&gt;</code> shows the state of the repository at that specific commit</p>
+</li>
+<li>to go back to the "main" line of development: <code>git checkout main</code></li>
+</ul>
+<h3 id="undoing-a-commit-using-git-checkout">Undoing a commit using <code>git checkout</code></h3>
+<ul>
+<li>the idea behind any VCS: store "safe" copies of a project</li>
+<li>to see the snapshot of repository in some previous time, use that snapshot's/commit's reference to visit it <ul>
+<li><code>git checkout &lt;commit_id&gt;</code> </li>
+</ul>
+</li>
+<li>
+<p>! when you checkout a previous commit, HEAD no longer points to a branch - it points directly to a commit</p>
+<ul>
+<li>this is called a <strong>detached HEAD</strong> state<ul>
+<li>checking out a previous commit leads to HEAD no longer pointing to <em>master</em></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>in a detached state, any new commits you make will be orphaned, when you move HEAD back to the master</p>
+</li>
+<li>orphaned commits are up for deletion by Git's garbage collector<ul>
+<li>garbage collector runs on a configured interval and permanently destroys orphaned commits</li>
+</ul>
+</li>
+<li>
+<p>from the detached HEAD state, you can create a new branch using <code>git checkout -b &lt;master/branch_name&gt;</code></p>
+<ul>
+<li>more on this later</li>
+<li>! unfortunately, if you need the previous state of master, this strategy is not a very good idea</li>
+</ul>
+</li>
+<li>
+<p>checking out an old file does not lead to movement of the HEAD pointer (avoiding detached HEAD state)</p>
+</li>
+</ul>
+<h2 id="reverting-and-reseting">Reverting and reseting</h2>
+<h3 id="git-revert"><code>git revert</code></h3>
+<ul>
+<li>used for undoing changes to a repository's commit history</li>
+<li>instead of removing the commit from the history, it figures out how to invert the changes introduced by the commit and appends a new commit with the resulting inverse content<ul>
+<li>prevents Git from losing history</li>
+</ul>
+</li>
+<li>other 'undo' commands (e.g. <code>git checkout</code> and <code>git reset</code>) move the HEAD and branch ref pointers to a specified commit</li>
+<li>Git revert also takes a specified commit, then:<ul>
+<li>inverses the changes from that commit,</li>
+<li>creates a new "revert commit"</li>
+<li>the ref pointers are updated to point at the new revert commit</li>
+</ul>
+</li>
+</ul>
+<h3 id="git-reset"><code>git reset</code></h3>
+<ul>
+<li>a complex and versatile tool for undoing changes</li>
+<li>3 primary forms of invocation<ul>
+<li><code>--soft</code></li>
+<li><code>--mixed</code></li>
+<li><code>--hard</code></li>
+</ul>
+</li>
+<li>
+<p>these 3 forms correspond to the Git's internal state management mechanisms</p>
+<ul>
+<li>HEAD</li>
+<li>the staging index</li>
+<li>the working directory</li>
+</ul>
+</li>
+<li>
+<p>at the surface level, the behaviour of <code>git reset</code> is similar to <code>git checkout</code></p>
+<ul>
+<li><code>git checkout</code> operates solely on the HEAD ref pointer</li>
+<li><code>git reset</code> will move the HEAD ref pointer and the current brnach ref pointer</li>
+</ul>
+</li>
+<li>
+<p><a href="https://www.atlassian.com/git/tutorials/undoing-changes/git-reset">git checkout vs. git reset</a></p>
+</li>
+<li>
+<p>the pointer to the commit history is always modified, arguments <code>--soft</code>, <code>--mixed</code> and <code>--hard</code> correspond to the ways we modify the staging index and working directory trees</p>
+</li>
+</ul>
+<h3 id="git-reset-hard"><code>git reset --hard</code></h3>
+<ul>
+<li>the most direct and DANGEROUS option </li>
+<li>the commit history ref pointers are updated to the specified commit</li>
+<li><strong>the staging index and the working directory are reset to match that of the specified commit</strong><ul>
+<li>any previously pending changes to the staging index and the working directory gets reset to match teh state of the commit tree</li>
+<li>any pending work not commited will be lost</li>
+<li><code>git reset HEAD~2 --hard</code> to effectively remove the last two commits from the project history </li>
+<li><strong>NEVER PERFORM THE ABOVE OPERATION ON ALREADY PUBLISHED COMMITS (TO A SHARED REPOSITORY)</strong></li>
+</ul>
+</li>
+<li>this data loss cannot be undone!<ul>
+<li>if you look at the objects database, removed commits will still be there, but only until next garbage collection by Git! </li>
+</ul>
+</li>
+</ul>
+<h3 id="git-reset-mixed"><code>git reset --mixed</code></h3>
+<ul>
+<li>the default opption<ul>
+<li>it is the same as executing <code>git reset</code></li>
+</ul>
+</li>
+<li>the ref pointers are updated</li>
+<li>the staging index is reset to the state of the specified commit</li>
+<li>any changes that have been undone from the staging index are moved to the working directory</li>
+<li>compare this to the --hard reset case where we've lost these updates </li>
+<li><code>git reset HEAD &lt;file&gt;</code> is used for unstaging a file sometimes, but safer to follow the Git recommendation <code>git restore --staged &lt;staged file&gt;</code> to remove from the stagine area</li>
+</ul>
+<h3 id="git-reset-soft"><code>git reset --soft</code></h3>
+<ul>
+<li>
+<p>the ref pointers are updated and the reset stops there</p>
+<ul>
+<li>the staging index and the working directory are left untouched</li>
+</ul>
+</li>
+<li>
+<p>this behaviour can be hard to clearly demonstrate</p>
+</li>
+<li>
+<p>if you execute soft reset with the default argument of the target commit (which is HEAD), by default nothing will change since the commit history was already sitting on HEAD</p>
+<ul>
+<li>we need to provide it with some historical commit id</li>
+</ul>
+</li>
+<li>
+<p>possible usecases:</p>
+<ul>
+<li>useful if you committed to the wrong branch. all changes go back to staging area and move with you while you checkout the right branch</li>
+<li>the easiest way to squash that many commits would be to do <code>git reset --soft</code> and then commit</li>
+</ul>
+</li>
+</ul>
+<h3 id="dont-reset-public-history">Don't reset public history</h3>
+<ul>
+<li>don't use <code>git reset</code> when any snapshots have been pushed to a public repository <ul>
+<li>you have to assume that other developers are reliant upon it</li>
+</ul>
+</li>
+</ul>
+<h1 id="verion-control-with-git-part-5">Verion control with Git - Part 5</h1>
+<h2 id="branches">Branches</h2>
+<ul>
+<li>
+<p>branching means:</p>
+<ul>
+<li>diverging from the main line of development<ul>
+<li>and continue to do work without affecting the main (stable/production) development line</li>
+</ul>
+</li>
+<li>developing multiple things in parallel</li>
+</ul>
+</li>
+<li>
+<p>in other VCS tools, this requires a lot of resources</p>
+<ul>
+<li>e.g. to create a newcopy of your source code directory   </li>
+</ul>
+</li>
+<li>
+<p>not in Git! - very lightweight, killer feature</p>
+</li>
+<li>
+<p>when you commit in Git, Git stores a commit object that contains a pointer to the snapshot of the content you staged:</p>
+<ul>
+<li>the author and message metadata</li>
+<li>and zero or more pointers to the commit or commits that were the direct parents of this commit:<ul>
+<li>zero parents for the first commit</li>
+<li>one parent for a normal commit</li>
+<li>and multiple parents for a commit that results from a merge of two or more branches</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>you can view all commits across branches using <code>git log --branches=*</code>        </p>
+</li>
+</ul>
+<h3 id="creating-a-new-branch">Creating a new branch</h3>
+<ul>
+<li>a branch in Git is simply a lightweight movable pointer to one of the commits</li>
+<li>the default branch name in Git is  or <em>main</em><ul>
+<li>originally <em>master</em> see <a href="https://www.bbc.com/news/technology-53050955">story why it changed</a></li>
+<li>as you initially make commits, you're given a main branch that points to the last commit you made
+and every time you commit, it moves forward automatically</li>
+</ul>
+</li>
+<li>
+<p><strong>what happens when you create a new branch?</strong> </p>
+<ul>
+<li>it creates a new pointer for you to move around!</li>
+</ul>
+</li>
+<li>
+<p><code>git branch &lt;branch_name&gt;</code> to create a new branch</p>
+</li>
+<li>look at the following 2 graphs to see that indeed, new branch is just another pointer pointing to the last commit</li>
+</ul>
+<p><img alt="caption" src="../pictures/before_branch.png" /></p>
+<ul>
+<li>added a new branch called "brave" with <code>git branch brave</code></li>
+</ul>
+<p><img alt="caption" src="../pictures/branch_as_pointer.png" /></p>
+<ul>
+<li>HEAD is still pointing to the master<ul>
+<li>if we would add another commit now, we would be contributing to the main</li>
+</ul>
+</li>
+</ul>
+<h3 id="head">HEAD</h3>
+<ul>
+<li>
+<p>how does Git know what branch you're currently on?</p>
+<ul>
+<li>it keeps a special pointer called <em>HEAD</em><ul>
+<li>a pointer to the local branch you're currently on</li>
+<li>you can see it in the file .git/HEAD</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>for now we are still on the "master" branch, we did not yet switched to the "new branch"</p>
+</li>
+<li>
+<p>to switch to another branch, you can use <code>git checkout &lt;new_branch&gt;</code></p>
+<ul>
+<li><code>git status</code> will confirm that you are indeed looking at it</li>
+<li><code>git log</code> will show <em>HEAD</em> pointing to the "new branch"</li>
+</ul>
+</li>
+<li>if you change a file, stage it and commit it, your project history will diverge</li>
+</ul>
+<h2 id="branching-and-merging">Branching and merging</h2>
+<ul>
+<li>
+<p>you've decided that you're going to work on issue #12</p>
+<ul>
+<li>issues are generally the way code development is organized and managed, see <a href="https://guides.github.com/features/issues/">github manual</a></li>
+</ul>
+</li>
+<li>
+<p><code>git checkout -b iss12</code></p>
+</li>
+<li>
+<p>(look at the GitGraph)</p>
+</li>
+<li>
+<p>now on the new branch</p>
+<ul>
+<li>create some new file or make some changes</li>
+<li>commit it and look at the graph again<ul>
+<li>your project history has diverged</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>(graph after working on new branch)</p>
+<ul>
+<li>
+<p>a branch in Git is actually a simple file that contains the 40 character SHA-1 checksum of the commit it points to</p>
+<ul>
+<li>=&gt; branches are cheap to create and destroy</li>
+<li>creating a new branch is as quick and simple as writing 41 bytes to a file (40 characters and a newline).</li>
+</ul>
+</li>
+<li>
+<p>now imagine you need to make a <em>hotfix</em>, to do this, you need to move away from the iss53 back to the main line of the development</p>
+</li>
+<li>
+<p>to switch from the current branch to another, you need to commit your changes</p>
+<ul>
+<li>or stash them, which we will be talking about later</li>
+</ul>
+</li>
+<li>
+<p>you switch back to <em>master</em></p>
+<ul>
+<li>you create a new branch named "hotfix"</li>
+<li>you hotfix what you need</li>
+<li>then you need to merge it back to the master (after some tests)</li>
+</ul>
+</li>
+</ul>
+<p>(look at GitGraph after hotfixing)</p>
+<h2 id="merging-fastforward">Merging - fastforward</h2>
+<ul>
+<li>branching is usefull only if we can combine things back in the end</li>
+<li><code>git merge &lt;branch_to_be_merged_into_where_HEAD_is_pointing&gt;</code></li>
+<li>because the commit pointed to by the branch you merged in was directly upstream of the commit you’re on, Git moves the pointer forward<ul>
+<li>when you try to merge one commit with a commit that can be reached by following the first commit’s history, Git simplifies things by moving the pointer forward because there is no divergent work to merge together—this is called a <strong>fast-forward.</strong></li>
+<li>notice that Git itself tells us this was a fast-forwart type of the merge</li>
+<li>Git does the best job to automatically merge things, if not possible you need to do it manually or use <code>git mergetool</code></li>
+</ul>
+</li>
+</ul>
+<p>(GitGraph after merging the hotfix)</p>
+<ul>
+<li><code>git branch -d hotfix</code></li>
+</ul>
+<h3 id="merging-recursive-three-way-merge">Merging - recursive (three-way merge)</h3>
+<ul>
+<li>your development history has diverged from some older point</li>
+<li>
+<p>becausee the commit on the branch you’re on isn’t a direct ancestor of the branch you’re merging in, Git has to do some work</p>
+<ul>
+<li>in this case, Git does a simple <strong>three-way merge</strong>, using the two snapshots pointed to by the branch tips and the common ancestor of the two.</li>
+</ul>
+</li>
+<li>
+<p><code>git checkout master</code> &amp; <code>git merge iss12</code></p>
+</li>
+<li>
+<p>TODO: chart (three snapshots used in a typical merge)</p>
+</li>
+<li>
+<p>instead of just moving the branch pointer forward, Git creates a new snapshot that results from this three-way merge and automatically creates a new commit that points to it </p>
+<ul>
+<li>this is referred to as a merge commit<ul>
+<li>it is special by the fact that it has more than one parent</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>git add &lt;changed file&gt;</code> </p>
+</li>
+<li><code>git merge --continue</code> </li>
+<li>if something goes wrong, e.g. there is a conflict, use <code>git merge --abort</code></li>
+<li>look at the git log to see the branched development</li>
+</ul>
+<h2 id="merge-conflicts-diverged-paths">Merge conflicts - diverged paths</h2>
+<ul>
+<li>
+<p>if you changed the same part of the same file differently in the two branches you-re merging together, Git won't be able to merge them cleanly</p>
+</li>
+<li>
+<p>this is how you repository looks like <img alt="" src="../pictures/pre_conflict_diverged.png" /></p>
+</li>
+</ul>
+<h3 id="merge-conflicts-resolving">Merge conflicts -resolving</h3>
+<ul>
+<li>
+<p>if we run <code>git merge branch</code> when there is a conflict we will get (something like) following message</p>
+<ul>
+<li><code>CONFLICT (content): Merge conflict in index.html</code> 
+  <code>Automatic merge failed; fix conflicts and then commit the result.</code></li>
+</ul>
+</li>
+<li>
+<p>Git hasn’t automatically created a new merge commit</p>
+<ul>
+<li>it has paused the process while you resolve the conflict.</li>
+<li><code>git status</code> to see which files are unmerged at any point after a merge conflict</li>
+</ul>
+</li>
+<li>
+<p>open the conflicting file</p>
+<ul>
+<li><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD:</code></li>
+</ul>
+<p><code>......one version</code></p>
+<p><code>=========</code></p>
+<p><code>...... second version</code></p>
+<p><code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; &lt;conflicting branch name&gt;</code></p>
+</li>
+<li>
+<p>resolve each of the conflicted section in the conflicted file</p>
+</li>
+<li>
+<p>run <code>git add</code> on each file</p>
+<ul>
+<li>staging the file marks it as resolved in Git</li>
+</ul>
+</li>
+<li>
+<p>run <code>git commit</code> to finalize the merge commit</p>
+</li>
+<li>
+<p>see the resulting graph on the next slide</p>
+</li>
+<li>after resolving: </li>
+</ul>
+<p><img alt="." src="../pictures/conflict_resolved.png" /></p>
+<h3 id="merging-jupyter-notebooks">Merging jupyter notebooks</h3>
+<ul>
+<li>jupyter notebooks are technically JSON documents  -&gt; merging in the terminal is painfull (because of all the metadata)</li>
+<li>you can uses <a href="https://github.com/jupyterlab/jupyterlab-git">JupyterLag-git</a> or good IDE like <a href="https://code.visualstudio.com/">VScode</a></li>
+</ul>
+<h3 id="branching-management">Branching management</h3>
+<ul>
+<li>Another useful option to figure out what state your branches are in is to filter this list to branches that you have or have not yet merged into the branch you’re currently on.<ul>
+<li><code>git branch --merged</code> &amp; <code>git branch --no-merged</code></li>
+<li>branches on this list without the * in front of them are generally fine to delete with <code>git branch -d</code></li>
+</ul>
+</li>
+<li>if you have a branch with contents that are not merged in another branch yet, standard <code>git branch -d</code> will fail (error: The branch '<branch_name>' is not an ancestor of your current HEAD.</li>
+</ul>
+<h1 id="version-control-with-git-part-6">Version control with Git - Part 6</h1>
+<h2 id="github">GitHub</h2>
+<p>TODO</p>
+<h2 id="git-remotes">Git remotes</h2>
+<ul>
+<li>
+<p>use remotes to collaborate remotely</p>
+<ul>
+<li>remotes are versions of your project that are hosted on the Internet or network somewhere</li>
+</ul>
+</li>
+<li>
+<p><strong>.git</strong> folder represents an entire copy of the history, objects and the references and all the snapshots</p>
+</li>
+<li>
+<p>to cooperate with other people, they also have the entire copy of the project</p>
+<ul>
+<li>your local copy is aware of other linked repositories</li>
+</ul>
+</li>
+<li>
+<p><code>git remote</code> lists all remotes that Git is aware of</p>
+</li>
+<li><code>git remote -v</code> to show the URL</li>
+<li>
+<p><code>git remote add &lt;shortname&gt; &lt;url&gt;</code></p>
+<ul>
+<li>you can use <code>&lt;shortname&gt;</code>  on the command line in lieu of the whole URL</li>
+</ul>
+</li>
+<li>
+<p>e.g. <code>git fetch &lt;shortname&gt;</code> fetches all the information that you don't yet have in your repository</p>
+<ul>
+<li>it only pulls the data to your local repository - it doesn't automatically merge it with any of your work or modify what you're currently working on<ul>
+<li>you have to merge it manually into your work</li>
+<li>if you have a branch set up to track a remote branch, you can use the git pull commmand to automatically fetch and then merge a remote branch into your current branch</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>we will talk more about pushing and pulling from the remotes when talking about branches</p>
+</li>
+<li><code>git remote show origin</code> to see more information about a particular remote</li>
+<li><code>git remote rename &lt;old_shortname&gt; &lt;new_shortname&gt;</code></li>
+<li>
+<p><code>git remote rm &lt;shortname&gt;</code></p>
+</li>
+<li>
+<p>adding remote looks like this on a graph:</p>
+</li>
+</ul>
+<p><img alt="." src="../pictures/added_remotes.png" /></p>
+<h3 id="the-protocols">The protocols</h3>
+<ul>
+<li>
+<p>Git can use 4 major network protocols to transfer data:</p>
+<ul>
+<li>local<ul>
+<li>the "remote" repository is in another directory on the same host</li>
+<li><code>git clone &lt;path_to_repository_&gt;.git</code></li>
+</ul>
+</li>
+<li>Secure Shell (SSH)<ul>
+<li>common transport protocol for Git</li>
+</ul>
+</li>
+<li>Hypertext Transfer Protocol Secure (HTTPs)<ul>
+<li>currently the most used protofocl for Git (smart HTTP version)</li>
+</ul>
+</li>
+<li>the Git protocol </li>
+</ul>
+</li>
+<li>
+<p>HTTPs and SSH are protocols that you should be aware of</p>
+</li>
+</ul>
+<h3 id="the-https-protocol">The HTTP/S protocol</h3>
+<ul>
+<li>"smart" HTTP is able to intelligently negiotiate data transfer (similar to SSH)<ul>
+<li>before "dumb" HTTP, which was read only mostly</li>
+</ul>
+</li>
+<li>smart HTTP operates very similarly to the SSH or Git protocols but runs over standard HTTPS ports</li>
+<li>
+<p>can use various HTTP authentication mechanisms</p>
+<ul>
+<li>meaning it’s often easier on the user than something like SSH, since you can use things like username/password authentication rather than having to set up SSH keys.</li>
+</ul>
+</li>
+<li>
+<p>the most popular way to use Git now, since it can be set up to both serve anonymously like the git:// protocol, and can also be pushed over with authentication and encryption like the SSH protocol</p>
+<ul>
+<li>instead of having to set up different URLs for these things, you can now use a single URL for both. </li>
+<li>If you try to push and the repository requires authentication (which it normally should), the server can prompt for a username and password.<ul>
+<li>The same goes for read access.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="the-ssh-protocol">The SSH protocol</h3>
+<ul>
+<li>common transport protocol for Git</li>
+<li>
+<p>SSH is the only network-based protocol that you can easily read from and write to</p>
+<ul>
+<li>other 2 (Git and HTTP) are generally read-only</li>
+</ul>
+</li>
+<li>
+<p>to clone a Git repo over SSH you can use <code>git clone ssh://user@server:project.git</code></p>
+<ul>
+<li>or if you use <code>git clone user@server:project.git</code>, Git assumes SSH</li>
+</ul>
+</li>
+<li>
+<p>set it up to pair your local repos with the github following <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh">this tutorial</a></p>
+</li>
+<li>
+<p>PROS:</p>
+<ul>
+<li>use it if you want authenticated write access to your repository over a network</li>
+<li>
+<p>easy to set up</p>
+</li>
+<li>
+<p>secure (all data transfer is encrypted and authenticated</p>
+</li>
+<li>efficient (data as compact as possible)</li>
+</ul>
+</li>
+<li>
+<p>CONS:</p>
+<ul>
+<li>you can't serve anonymous access of your repository over it<ul>
+<li>people must have access to your machine over SSH to access it (even in read-only capacity)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="working-with-remote-branches">Working with remote branches</h3>
+<ul>
+<li>references to the state of branches on your remote repositories</li>
+<li>they're local branches that you can't move<ul>
+<li>they are moved automatidcally whenever you do any network communication</li>
+</ul>
+</li>
+<li>they act as bookmarks to remind you where the brances on your remote repositores were the last time you connected to them</li>
+<li>
+<p>they have the form (remote)/(branch)</p>
+</li>
+<li>
+<p>when you clone from the remote repository, Git automatically:</p>
+<ul>
+<li>names it origin</li>
+<li>pulls down all its data </li>
+<li>creates a pointer to where its master branch is</li>
+<li>names it origin/master locally</li>
+</ul>
+</li>
+</ul>
+<h3 id="pushing">Pushing</h3>
+<ul>
+<li>if you want to share a branch, you need to push it up to a remote (where you have a write access)<ul>
+<li>local branches aren't automatically synchronized to the remotes </li>
+<li>you have to explicitly push the branches you want to share</li>
+</ul>
+</li>
+<li>you can use private branches to do work you don't want to share</li>
+<li>
+<p><code>git push &lt;remote&gt; &lt;branch&gt;</code> </p>
+<ul>
+<li>this is a shortcut for:<ul>
+<li>Git automatically expands the branch name out to refs/heads/<branchname>:refs/heads/<branchname></li>
+</ul>
+</li>
+<li>alternatively <code>git push origin &lt;branchname&gt;:&lt;branchname&gt;</code><ul>
+<li>this can be used to name remote branch differently than the local one</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>when you do a <code>git fetch</code>, you don't automatically have local, editable copies of remote branches</p>
+<ul>
+<li>you have only a pointer (which you can't modify) </li>
+</ul>
+</li>
+<li>to merge remote stuff into your current working branch, you can run <code>git merge origin/&lt;branchname&gt;</code></li>
+</ul>
+<h3 id="tracking-branches">Tracking branches</h3>
+<ul>
+<li>to see the full list of remote references, use <code>git remote show origin</code></li>
+<li><code>git fetch --all</code> updates your remote-tracking branches</li>
+<li>
+<p><code>git branch -vv</code> lists local branches (with some info) and what each branch is tracking</p>
+</li>
+<li>
+<p>if there is a remote branch that you want to track, you can create a local branch and base it off the remote one with</p>
+<ul>
+<li><code>git checkout -b &lt;local_branch_name&gt; origin/&lt;remote_branch_name&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>checking out a local branch from a rermote branch automatically creates what is called a <em>tracking branch</em></p>
+<ul>
+<li>a local branch with a direct relationship to a remote branch</li>
+</ul>
+</li>
+<li>
+<p>if you're on a tracking branch and type <code>git push</code>, Git automaticallly knows which server and branch to push to</p>
+<ul>
+<li>same holds for <code>git pull</code></li>
+</ul>
+</li>
+<li>
+<p>when you clone a repository, it generally automatically creates a master branch that tracks origin/master</p>
+<ul>
+<li>that's why <code>git push</code> and <code>git pull</code> work out of the box with no other arguments</li>
+</ul>
+</li>
+<li>
+<p>to delete a remote branch <code>git push &lt;remote_name&gt; --delete &lt;remote_branch_name&gt;</code></p>
+</li>
+</ul>
+<h3 id="pulling">Pulling</h3>
+<ul>
+<li><code>git fetch</code> fetches all the changes on the server that you don't have yet, it will not modify your working directory at all</li>
+<li><code>git pull</code> is basically <code>git fetch</code> followed immediately with <code>git merge</code></li>
+</ul>
+<h2 id="branching-workflows">Branching Workflows</h2>
+<ul>
+<li>merging from one branch into another multiple times over a long period is generally easy to do</li>
+<li>=&gt; you can have several branches that are always open and that you use for different stages of your development cycle<ul>
+<li>you can merge regularly from some of them into others</li>
+</ul>
+</li>
+<li>e.g. only entirely stable code in the master branch <ul>
+<li>paralel branch named "develop" for development and testing, which is merged into</li>
+<li>branch "develop" pulls in topics from so colled topic branches (short-lived branches) </li>
+</ul>
+</li>
+<li>
+<p>in reality, we are talking about pointers moving up the line of commits we're making</p>
+<ul>
+<li>the stable branches are further down the line in your commity hisotry</li>
+<li>the bleeding-edge branches are farther up the history<ul>
+<li>think about them as work silos, where sets of commits graduate to a more stable silo when they're fully tested</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>now that we know the basics, the building blocks, let's discuss the collaboration workflows</p>
+<ul>
+<li>read <a href="https://www.atlassian.com/git/tutorials/comparing-workflows">this</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+    <nav class="md-footer__inner md-grid" aria-label="Footer" >
+      
+        
+        <a href="../schedule/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Schedule" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Schedule
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../Seminars/" class="md-footer__link md-footer__link--next" aria-label="Next: Seminars" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Seminars
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.37e9125f.min.js"></script>
+      
+    
+  </body>
+</html>
