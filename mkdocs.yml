@@ -1,0 +1,9 @@
+site_name: Version Control with Git
+
+docs_dir: docs
+nav:
+    - Home: README.md
+    - Part1: part1.md
+    - Seminar 1: Seminar1.md
+    - Seminar 2: Seminar2.md
+    - Git installation: git_installation.md
