@@ -1,5 +1,4 @@
 # Version control with Git - Part 1 
-
 by **Martin Hronec**
 
 ## What is a *version control*
@@ -179,7 +178,6 @@ by **Martin Hronec**
 * an "object" is a blob, tree, commit
 * in Git data store, all objects are content-addressed by their **SHA-1 hash**
     * moving to SHA-256, see [collision](https://git-scm.com/docs/hash-function-transition/)
-    * TODO: mode details (http://www.sha1-online.com/ , https://www.geeksforgeeks.org/difference-between-sha1-and-sha256/)
 
 ### References
 
@@ -196,8 +194,6 @@ by **Martin Hronec**
     * when we take a new snapshot, we know what it is related to
     * "where we are/what are we looking at" is a special reference called **HEAD**
 
-
-# Version control with Git - Part 2
 
 ## Git repository
 
@@ -308,8 +304,6 @@ by **Martin Hronec**
 * the git status shows differences between the commit history and the staging index. 
     * after adding file (including to the staging area, its hash changes 
     
-
-# Version control with Git - Part 3
 
 ## Example of Git's data model
 
@@ -454,8 +448,6 @@ by **Martin Hronec**
    
 * there are templates of `.gitignore` files available for most of the languages and types of the projects, see option on GitHub when creating a repository
 
-# Version control with Git - Part 4
-
 ## Undoing changes
 
 * `git log` to show history 
@@ -575,8 +567,6 @@ by **Martin Hronec**
 ### Don't reset public history
 * don't use `git reset` when any snapshots have been pushed to a public repository 
     * you have to assume that other developers are reliant upon it
-
-# Verion control with Git - Part 5
 
 ## Branches
 
@@ -751,11 +741,9 @@ by **Martin Hronec**
     * branches on this list without the * in front of them are generally fine to delete with `git branch -d`
 * if you have a branch with contents that are not merged in another branch yet, standard `git branch -d` will fail (error: The branch '<branch_name>' is not an ancestor of your current HEAD.
 
-# Version control with Git - Part 6
 ## GitHub 
 
-TODO
-
+* live features walkthrough, head to [https://github.com/](https://github.com/)
 
 ## Git remotes    
 

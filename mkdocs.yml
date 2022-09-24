@@ -8,6 +8,7 @@ nav:
     - Git installation: git_installation.md
     - Project topics: final_project_topics.md
     - Schedule: schedule.md
+    - References: references.md
 
 theme:
   name: material
@@ -26,6 +27,12 @@ theme:
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.tracking
+    - navigation.sections
+
 
 markdown_extensions:
   - pymdownx.superfences:

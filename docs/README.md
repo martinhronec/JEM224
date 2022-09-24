@@ -16,6 +16,10 @@
     * Friday (30th) - after lunch (13:30)
 
 * **Project** - 40 points
-    * Build "wiki"-like repository through collaboration with your fellow students using workflows we covered.
+    * Build "wiki"-like repository through collaboration with your fellow students using workflows we covered
         * team size TBD after number of *committed* students stabilizes 
+    * development should be with frequent committing, branching and in collaboration with your colleagues
+    * grading will be done based both on the contents of the repo as well as your collaboration and proper usage of Git & GitHub
+
+Deadline is 17th of September.
     * topics to choose from can be found [here](final_project_topics.md)
