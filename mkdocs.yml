@@ -3,7 +3,39 @@ site_name: Version Control with Git
 docs_dir: docs
 nav:
     - Home: README.md
-    - Part1: part1.md
-    - Seminar 1: Seminar1.md
-    - Seminar 2: Seminar2.md
+    - Schedule: schedule.md
+    - Lectures: Lectures.md
+    - Seminars: Seminars.md
     - Git installation: git_installation.md
+    - Project topics: final_projects_topics.md
+
+theme:
+  name: material
+  palette:
+
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences

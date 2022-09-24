@@ -1,48 +1,21 @@
 # Version control with Git (JEM224)
 
-link to the morning quiz: https://docs.google.com/forms/d/e/1FAIpQLSdv4QDOpSNkFPa_tfwNHvBegvfzMz1LCMsim0W0q53yp1fPnw/viewform
+* by **Martin Hronec**
+* from **Sep 26th to Sep 30th** (28th - state holiday)
+    * 26th & 27the ONLINE ONLY! (health issues)
+        * [link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjEzNDc0NTItNGIzMS00MWQ0LTgzNTUtZGEwMDU0MDQxNGM2%40thread.v2/0?context=%7b%22Tid%22%3a%22e09276da-f934-4086-bf08-8816a20414a2%22%2c%22Oid%22%3a%2263944b03-e777-4f51-b072-591ecb9d0b83%22%7d) to lectures and seminars.
 
-link to the lectures and seminars: https://meet.google.com/bmb-sfpt-opw
+## Requirements
 
-by **Martin Hronec**
+* **Activity** - 10 points
+* **Quiz** - 10 points
+    * Thursday (29th) 9am
+    * multiple choice
+    * 20 minutes
+* **Final Exam** - 40 points
+    * Friday (30th) - after lunch (13:30)
 
-Sep 6th - 9th
-
-10 points - Activity 
-
-20 points - Quiz
-
-30 points - Final Exam
-
-40 points - Project
-
-**Project**
-
-* Build "wiki"-like repository through collaboration with your fellow students using workflows we covered.
-
-* Topics will be specified, e.g. data version control, git hooks, etc.
-    * Should be more "advanced" building on top of things we've covered during the course.
-
-Schedule is only preliminary and subject to the change depending on how does this remote teaching go.
-
-**Schedule template:**
-
-09:00 Lecture 
-
-~ 10:20 pause (10 min)
-
-10:30 Lecture 
-
-~ 11:50 Lunch break (1h 40min)
-
-13:30 Lecture/Seminar
-
-~15:00 Done
-
-
-**The last day:** 
-Exam
-Team collaboration with consults
-
-**Sunday (17th of September) 23:59 **
-Project deadline.
+* **Project** - 40 points
+    * Build "wiki"-like repository through collaboration with your fellow students using workflows we covered.
+        * team size TBD after number of *committed* students stabilizes 
+    * topics to choose from can be found [here](final_project_topics.md)

@@ -107,9 +107,45 @@ by **Martin Hronec**
     * `echo "Git is awesome." > file.txt` 
 * `cat` reads a file and outputs its content
 
+## IDEs
+* integrated development environment
+* use some!
+* standard features:
+    * text editor
+    * *code completion*
+    * linting
+    * debugger
+* lot of options, but the best (IMHO) is hands down [Visual Studio Code](https://code.visualstudio.com)
+    
+
 ## Git's data model
 
-* TODO: add graph (created in mermaid)
+``` mermaid
+
+    gitGraph
+       commit id: "1"
+       commit id: "2"
+       branch nice_feature
+       checkout nice_feature
+       commit id: "3"
+       checkout main
+       commit id: "4"
+       checkout nice_feature
+       branch very_nice_feature
+       checkout very_nice_feature
+       commit id: "5"
+       checkout main
+       commit id: "6"
+       checkout nice_feature
+       commit id: "7"
+       checkout main
+       merge nice_feature id: "customID" tag: "customTag" type: REVERSE
+       checkout very_nice_feature
+       commit id: "8"
+       checkout main
+       commit id: "9"
+
+```
 
 * version control is a method for tracking changes to source code
 * modelling history of a collection of files and folders within some top-level directory through relating snapshots
@@ -287,7 +323,7 @@ by **Martin Hronec**
     * one tree that lists the contents of the directory and specifies which file names are stored as which blobs 
     * one commit with the pointer to that root tree and all the commit metadata
 
-![caption](./pictures/single_commit_detailed.PNG)
+![caption](./pictures/single_commit_detailed.png)
 
 * we will use [git-graph](https://github.com/hoduche/git-graph) to quickly show the underlying data model of our repository
     * see the github page for the color reference
@@ -540,6 +576,187 @@ by **Martin Hronec**
 * don't use `git reset` when any snapshots have been pushed to a public repository 
     * you have to assume that other developers are reliant upon it
 
+# Verion control with Git - Part 5
+
+## Branches
+
+* branching means:
+    * diverging from the main line of development
+        * and continue to do work without affecting the main (stable/production) development line
+    * developing multiple things in parallel
+
+* in other VCS tools, this requires a lot of resources
+    * e.g. to create a newcopy of your source code directory   
+* not in Git! - very lightweight, killer feature
+
+* when you commit in Git, Git stores a commit object that contains a pointer to the snapshot of the content you staged:
+    * the author and message metadata
+    * and zero or more pointers to the commit or commits that were the direct parents of this commit:
+        * zero parents for the first commit
+        * one parent for a normal commit
+        * and multiple parents for a commit that results from a merge of two or more branches
+        
+* you can view all commits across branches using `git log --branches=*`        
+
+### Creating a new branch
+
+* a branch in Git is simply a lightweight movable pointer to one of the commits
+* the default branch name in Git is  or *main*
+    * originally *master* see [story why it changed](https://www.bbc.com/news/technology-53050955)
+    * as you initially make commits, you're given a main branch that points to the last commit you made
+    and every time you commit, it moves forward automatically
+* **what happens when you create a new branch?** 
+    * it creates a new pointer for you to move around!
+    
+* `git branch <branch_name>` to create a new branch
+* look at the following 2 graphs to see that indeed, new branch is just another pointer pointing to the last commit
+
+![caption](./pictures/before_branch.png)
+
+* added a new branch called "brave" with `git branch brave`
+
+![caption](./pictures/branch_as_pointer.png)
+
+* HEAD is still pointing to the master
+    * if we would add another commit now, we would be contributing to the main
+
+### HEAD
+
+* how does Git know what branch you're currently on?
+    * it keeps a special pointer called *HEAD*
+        * a pointer to the local branch you're currently on
+        * you can see it in the file .git/HEAD
+        
+* for now we are still on the "master" branch, we did not yet switched to the "new branch"
+
+* to switch to another branch, you can use `git checkout <new_branch>`
+    * `git status` will confirm that you are indeed looking at it
+    * `git log` will show *HEAD* pointing to the "new branch"
+* if you change a file, stage it and commit it, your project history will diverge
+
+## Branching and merging
+
+* you've decided that you're going to work on issue #12
+    * issues are generally the way code development is organized and managed, see [github manual](https://guides.github.com/features/issues/)
+
+* `git checkout -b iss12`
+
+* (look at the GitGraph)
+
+* now on the new branch
+    * create some new file or make some changes
+    * commit it and look at the graph again
+        * your project history has diverged
+
+(graph after working on new branch)
+
+* a branch in Git is actually a simple file that contains the 40 character SHA-1 checksum of the commit it points to
+    * => branches are cheap to create and destroy
+    * creating a new branch is as quick and simple as writing 41 bytes to a file (40 characters and a newline).
+
+* now imagine you need to make a *hotfix*, to do this, you need to move away from the iss53 back to the main line of the development
+* to switch from the current branch to another, you need to commit your changes
+    * or stash them, which we will be talking about later
+    
+* you switch back to *master*
+    * you create a new branch named "hotfix"
+    * you hotfix what you need
+    * then you need to merge it back to the master (after some tests)
+
+(look at GitGraph after hotfixing)
+
+
+## Merging - fastforward
+* branching is usefull only if we can combine things back in the end
+* `git merge <branch_to_be_merged_into_where_HEAD_is_pointing>`
+* because the commit pointed to by the branch you merged in was directly upstream of the commit you’re on, Git moves the pointer forward
+    * when you try to merge one commit with a commit that can be reached by following the first commit’s history, Git simplifies things by moving the pointer forward because there is no divergent work to merge together—this is called a **fast-forward.**
+    * notice that Git itself tells us this was a fast-forwart type of the merge
+    * Git does the best job to automatically merge things, if not possible you need to do it manually or use `git mergetool`
+
+(GitGraph after merging the hotfix)
+
+* `git branch -d hotfix`
+
+### Merging - recursive (three-way merge)
+
+* your development history has diverged from some older point
+* becausee the commit on the branch you’re on isn’t a direct ancestor of the branch you’re merging in, Git has to do some work
+    * in this case, Git does a simple **three-way merge**, using the two snapshots pointed to by the branch tips and the common ancestor of the two.
+
+* `git checkout master` & `git merge iss12`
+
+*  TODO: chart (three snapshots used in a typical merge)
+
+* instead of just moving the branch pointer forward, Git creates a new snapshot that results from this three-way merge and automatically creates a new commit that points to it 
+    * this is referred to as a merge commit
+        * it is special by the fact that it has more than one parent
+
+* `git add <changed file>` 
+* `git merge --continue` 
+* if something goes wrong, e.g. there is a conflict, use `git merge --abort`
+* look at the git log to see the branched development
+
+## Merge conflicts - diverged paths
+
+* if you changed the same part of the same file differently in the two branches you-re merging together, Git won't be able to merge them cleanly
+
+* this is how you repository looks like ![](./pictures/pre_conflict_diverged.png)
+
+
+### Merge conflicts -resolving
+
+* if we run `git merge branch` when there is a conflict we will get (something like) following message
+
+    * `CONFLICT (content): Merge conflict in index.html` 
+      `Automatic merge failed; fix conflicts and then commit the result.`
+
+* Git hasn’t automatically created a new merge commit
+    * it has paused the process while you resolve the conflict.
+    * `git status` to see which files are unmerged at any point after a merge conflict
+
+
+* open the conflicting file
+    * `<<<<<<<< HEAD:`
+    
+    `......one version`
+    
+    `=========`
+    
+    `...... second version`
+    
+    `>>>>>>>>> <conflicting branch name>`
+
+* resolve each of the conflicted section in the conflicted file
+* run `git add` on each file
+    * staging the file marks it as resolved in Git
+
+* run `git commit` to finalize the merge commit
+
+
+* see the resulting graph on the next slide
+* after resolving: 
+
+![.](./pictures/conflict_resolved.png)
+
+### Merging jupyter notebooks
+
+* jupyter notebooks are technically JSON documents  -> merging in the terminal is painfull (because of all the metadata)
+* you can uses [JupyterLag-git](https://github.com/jupyterlab/jupyterlab-git) or good IDE like [VScode](https://code.visualstudio.com/)
+
+### Branching management
+
+* Another useful option to figure out what state your branches are in is to filter this list to branches that you have or have not yet merged into the branch you’re currently on.
+    * `git branch --merged` & `git branch --no-merged`
+    * branches on this list without the * in front of them are generally fine to delete with `git branch -d`
+* if you have a branch with contents that are not merged in another branch yet, standard `git branch -d` will fail (error: The branch '<branch_name>' is not an ancestor of your current HEAD.
+
+# Version control with Git - Part 6
+## GitHub 
+
+TODO
+
+
 ## Git remotes    
 
 * use remotes to collaborate remotely
@@ -617,3 +834,73 @@ by **Martin Hronec**
     *  you can't serve anonymous access of your repository over it
         * people must have access to your machine over SSH to access it (even in read-only capacity)
 
+### Working with remote branches
+
+* references to the state of branches on your remote repositories
+* they're local branches that you can't move
+    * they are moved automatidcally whenever you do any network communication
+* they act as bookmarks to remind you where the brances on your remote repositores were the last time you connected to them
+* they have the form (remote)/(branch)
+
+* when you clone from the remote repository, Git automatically:
+    * names it origin
+    * pulls down all its data 
+    * creates a pointer to where its master branch is
+    * names it origin/master locally
+    
+### Pushing
+
+* if you want to share a branch, you need to push it up to a remote (where you have a write access)
+    * local branches aren't automatically synchronized to the remotes 
+    * you have to explicitly push the branches you want to share
+* you can use private branches to do work you don't want to share
+* `git push <remote> <branch>` 
+    * this is a shortcut for:
+        * Git automatically expands the branch name out to refs/heads/<branchname>:refs/heads/<branchname>
+    * alternatively `git push origin <branchname>:<branchname>`
+        * this can be used to name remote branch differently than the local one
+    
+* when you do a `git fetch`, you don't automatically have local, editable copies of remote branches
+    * you have only a pointer (which you can't modify) 
+* to merge remote stuff into your current working branch, you can run `git merge origin/<branchname>`
+ 
+### Tracking branches
+
+* to see the full list of remote references, use `git remote show origin`
+* `git fetch --all` updates your remote-tracking branches
+* `git branch -vv` lists local branches (with some info) and what each branch is tracking
+
+* if there is a remote branch that you want to track, you can create a local branch and base it off the remote one with
+    * `git checkout -b <local_branch_name> origin/<remote_branch_name>`
+
+* checking out a local branch from a rermote branch automatically creates what is called a *tracking branch*
+    * a local branch with a direct relationship to a remote branch
+* if you're on a tracking branch and type `git push`, Git automaticallly knows which server and branch to push to
+    * same holds for `git pull`
+    
+* when you clone a repository, it generally automatically creates a master branch that tracks origin/master
+    * that's why `git push` and `git pull` work out of the box with no other arguments
+
+
+* to delete a remote branch `git push <remote_name> --delete <remote_branch_name>`
+
+### Pulling
+
+* `git fetch` fetches all the changes on the server that you don't have yet, it will not modify your working directory at all
+* `git pull` is basically `git fetch` followed immediately with `git merge`
+
+## Branching Workflows
+
+* merging from one branch into another multiple times over a long period is generally easy to do
+* => you can have several branches that are always open and that you use for different stages of your development cycle
+    * you can merge regularly from some of them into others
+* e.g. only entirely stable code in the master branch 
+    * paralel branch named "develop" for development and testing, which is merged into
+    * branch "develop" pulls in topics from so colled topic branches (short-lived branches) 
+* in reality, we are talking about pointers moving up the line of commits we're making
+    * the stable branches are further down the line in your commity hisotry
+    * the bleeding-edge branches are farther up the history
+        * think about them as work silos, where sets of commits graduate to a more stable silo when they're fully tested
+
+* now that we know the basics, the building blocks, let's discuss the collaboration workflows
+    * read [this](https://www.atlassian.com/git/tutorials/comparing-workflows)
