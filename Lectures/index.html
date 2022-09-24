@@ -78,7 +78,9 @@
     
       
 
-<header class="md-header" data-md-component="header">
+  
+
+<header class="md-header md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href=".." title="Version Control with Git" class="md-header__button md-logo" aria-label="Version Control with Git" data-md-component="logo">
       
@@ -166,13 +168,108 @@
     
   </nav>
   
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Lectures
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../Seminars/" class="md-tabs__link">
+      Seminars
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../git_installation/" class="md-tabs__link">
+      Git installation
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../final_project_topics/" class="md-tabs__link">
+      Project topics
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../schedule/" class="md-tabs__link">
+      Schedule
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../references/" class="md-tabs__link">
+      References
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
 </header>
     
     <div class="md-container" data-md-component="container">
       
       
-        
-          
         
       
       <main class="md-main" data-md-component="main">
@@ -185,8 +282,10 @@
                   <div class="md-sidebar__inner">
                     
 
+  
 
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
     <a href=".." title="Version Control with Git" class="md-nav__button md-logo" aria-label="Version Control with Git" data-md-component="logo">
       
@@ -343,6 +442,389 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#git-repository" class="md-nav__link">
+    Git repository
+  </a>
+  
+    <nav class="md-nav" aria-label="Git repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-repositories" class="md-nav__link">
+    Initializing repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-of-a-fileblob" class="md-nav__link">
+    Lifecycle of a file/blob
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-of-the-filesrepository" class="md-nav__link">
+    Status of the files/repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-sections-of-a-git-project" class="md-nav__link">
+    Main sections of a Git project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commiting-the-changes" class="md-nav__link">
+    Commiting the changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-commit-history" class="md-nav__link">
+    The commit history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-trees-of-git" class="md-nav__link">
+    Three trees of Git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-gits-data-model" class="md-nav__link">
+    Example of Git's data model
+  </a>
+  
+    <nav class="md-nav" aria-label="Example of Git's data model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-commits-repository-representation" class="md-nav__link">
+    2-commits repository representation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-commits-repository-representation" class="md-nav__link">
+    3-commits repository representation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-plumbing-and-porcelain" class="md-nav__link">
+    Git - plumbing and porcelain
+  </a>
+  
+    <nav class="md-nav" aria-label="Git - plumbing and porcelain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-objects" class="md-nav__link">
+    Git objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashing" class="md-nav__link">
+    Hashing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-files" class="md-nav__link">
+    Removing files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moving-files" class="md-nav__link">
+    Moving files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-files-gitignore" class="md-nav__link">
+    Ignoring files - .gitignore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#undoing-changes" class="md-nav__link">
+    Undoing changes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkout" class="md-nav__link">
+    Checkout
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undoing-a-commit-using-git-checkout" class="md-nav__link">
+    Undoing a commit using git checkout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverting-and-reseting" class="md-nav__link">
+    Reverting and reseting
+  </a>
+  
+    <nav class="md-nav" aria-label="Reverting and reseting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-revert" class="md-nav__link">
+    git revert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset" class="md-nav__link">
+    git reset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset-hard" class="md-nav__link">
+    git reset --hard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset-mixed" class="md-nav__link">
+    git reset --mixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset-soft" class="md-nav__link">
+    git reset --soft
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-reset-public-history" class="md-nav__link">
+    Don't reset public history
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" class="md-nav__link">
+    Branches
+  </a>
+  
+    <nav class="md-nav" aria-label="Branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-branch" class="md-nav__link">
+    Creating a new branch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    HEAD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branching-and-merging" class="md-nav__link">
+    Branching and merging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merging-fastforward" class="md-nav__link">
+    Merging - fastforward
+  </a>
+  
+    <nav class="md-nav" aria-label="Merging - fastforward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merging-recursive-three-way-merge" class="md-nav__link">
+    Merging - recursive (three-way merge)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-conflicts-diverged-paths" class="md-nav__link">
+    Merge conflicts - diverged paths
+  </a>
+  
+    <nav class="md-nav" aria-label="Merge conflicts - diverged paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge-conflicts-resolving" class="md-nav__link">
+    Merge conflicts -resolving
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-jupyter-notebooks" class="md-nav__link">
+    Merging jupyter notebooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branching-management" class="md-nav__link">
+    Branching management
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-remotes" class="md-nav__link">
+    Git remotes
+  </a>
+  
+    <nav class="md-nav" aria-label="Git remotes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-protocols" class="md-nav__link">
+    The protocols
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-https-protocol" class="md-nav__link">
+    The HTTP/S protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-ssh-protocol" class="md-nav__link">
+    The SSH protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-remote-branches" class="md-nav__link">
+    Working with remote branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushing" class="md-nav__link">
+    Pushing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracking-branches" class="md-nav__link">
+    Tracking branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulling" class="md-nav__link">
+    Pulling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branching-workflows" class="md-nav__link">
+    Branching Workflows
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -406,6 +888,21 @@
     <li class="md-nav__item">
       <a href="../schedule/" class="md-nav__link">
         Schedule
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        References
       </a>
     </li>
   
@@ -522,6 +1019,389 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-repository" class="md-nav__link">
+    Git repository
+  </a>
+  
+    <nav class="md-nav" aria-label="Git repository">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#initializing-repositories" class="md-nav__link">
+    Initializing repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lifecycle-of-a-fileblob" class="md-nav__link">
+    Lifecycle of a file/blob
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#status-of-the-filesrepository" class="md-nav__link">
+    Status of the files/repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-sections-of-a-git-project" class="md-nav__link">
+    Main sections of a Git project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#commiting-the-changes" class="md-nav__link">
+    Commiting the changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-commit-history" class="md-nav__link">
+    The commit history
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#three-trees-of-git" class="md-nav__link">
+    Three trees of Git
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-of-gits-data-model" class="md-nav__link">
+    Example of Git's data model
+  </a>
+  
+    <nav class="md-nav" aria-label="Example of Git's data model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-commits-repository-representation" class="md-nav__link">
+    2-commits repository representation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-commits-repository-representation" class="md-nav__link">
+    3-commits repository representation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-plumbing-and-porcelain" class="md-nav__link">
+    Git - plumbing and porcelain
+  </a>
+  
+    <nav class="md-nav" aria-label="Git - plumbing and porcelain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-objects" class="md-nav__link">
+    Git objects
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hashing" class="md-nav__link">
+    Hashing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removing-files" class="md-nav__link">
+    Removing files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#moving-files" class="md-nav__link">
+    Moving files
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ignoring-files-gitignore" class="md-nav__link">
+    Ignoring files - .gitignore
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#undoing-changes" class="md-nav__link">
+    Undoing changes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkout" class="md-nav__link">
+    Checkout
+  </a>
+  
+    <nav class="md-nav" aria-label="Checkout">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#undoing-a-commit-using-git-checkout" class="md-nav__link">
+    Undoing a commit using git checkout
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reverting-and-reseting" class="md-nav__link">
+    Reverting and reseting
+  </a>
+  
+    <nav class="md-nav" aria-label="Reverting and reseting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#git-revert" class="md-nav__link">
+    git revert
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset" class="md-nav__link">
+    git reset
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset-hard" class="md-nav__link">
+    git reset --hard
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset-mixed" class="md-nav__link">
+    git reset --mixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#git-reset-soft" class="md-nav__link">
+    git reset --soft
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-reset-public-history" class="md-nav__link">
+    Don't reset public history
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branches" class="md-nav__link">
+    Branches
+  </a>
+  
+    <nav class="md-nav" aria-label="Branches">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#creating-a-new-branch" class="md-nav__link">
+    Creating a new branch
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#head" class="md-nav__link">
+    HEAD
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branching-and-merging" class="md-nav__link">
+    Branching and merging
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merging-fastforward" class="md-nav__link">
+    Merging - fastforward
+  </a>
+  
+    <nav class="md-nav" aria-label="Merging - fastforward">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merging-recursive-three-way-merge" class="md-nav__link">
+    Merging - recursive (three-way merge)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#merge-conflicts-diverged-paths" class="md-nav__link">
+    Merge conflicts - diverged paths
+  </a>
+  
+    <nav class="md-nav" aria-label="Merge conflicts - diverged paths">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#merge-conflicts-resolving" class="md-nav__link">
+    Merge conflicts -resolving
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#merging-jupyter-notebooks" class="md-nav__link">
+    Merging jupyter notebooks
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#branching-management" class="md-nav__link">
+    Branching management
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    GitHub
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#git-remotes" class="md-nav__link">
+    Git remotes
+  </a>
+  
+    <nav class="md-nav" aria-label="Git remotes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-protocols" class="md-nav__link">
+    The protocols
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-https-protocol" class="md-nav__link">
+    The HTTP/S protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-ssh-protocol" class="md-nav__link">
+    The SSH protocol
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#working-with-remote-branches" class="md-nav__link">
+    Working with remote branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pushing" class="md-nav__link">
+    Pushing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracking-branches" class="md-nav__link">
+    Tracking branches
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pulling" class="md-nav__link">
+    Pulling
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branching-workflows" class="md-nav__link">
+    Branching Workflows
+  </a>
   
 </li>
       
@@ -792,7 +1672,6 @@
 <li>an "object" is a blob, tree, commit</li>
 <li>in Git data store, all objects are content-addressed by their <strong>SHA-1 hash</strong><ul>
 <li>moving to SHA-256, see <a href="https://git-scm.com/docs/hash-function-transition/">collision</a></li>
-<li>TODO: mode details (http://www.sha1-online.com/ , https://www.geeksforgeeks.org/difference-between-sha1-and-sha256/)</li>
 </ul>
 </li>
 </ul>
@@ -823,7 +1702,6 @@
 </ul>
 </li>
 </ul>
-<h1 id="version-control-with-git-part-2">Version control with Git - Part 2</h1>
 <h2 id="git-repository">Git repository</h2>
 <ul>
 <li>a Git <strong>repository</strong> is the data objects and references</li>
@@ -1000,7 +1878,6 @@
 </ul>
 </li>
 </ul>
-<h1 id="version-control-with-git-part-3">Version control with Git - Part 3</h1>
 <h2 id="example-of-gits-data-model">Example of Git's data model</h2>
 <ul>
 <li>
@@ -1222,7 +2099,6 @@
 <p>there are templates of <code>.gitignore</code> files available for most of the languages and types of the projects, see option on GitHub when creating a repository</p>
 </li>
 </ul>
-<h1 id="version-control-with-git-part-4">Version control with Git - Part 4</h1>
 <h2 id="undoing-changes">Undoing changes</h2>
 <ul>
 <li>
@@ -1412,7 +2288,6 @@
 </ul>
 </li>
 </ul>
-<h1 id="verion-control-with-git-part-5">Verion control with Git - Part 5</h1>
 <h2 id="branches">Branches</h2>
 <ul>
 <li>
@@ -1671,9 +2546,10 @@ and every time you commit, it moves forward automatically</li>
 </li>
 <li>if you have a branch with contents that are not merged in another branch yet, standard <code>git branch -d</code> will fail (error: The branch '<branch_name>' is not an ancestor of your current HEAD.</li>
 </ul>
-<h1 id="version-control-with-git-part-6">Version control with Git - Part 6</h1>
 <h2 id="github">GitHub</h2>
-<p>TODO</p>
+<ul>
+<li>live features walkthrough, head to <a href="https://github.com/">https://github.com/</a></li>
+</ul>
 <h2 id="git-remotes">Git remotes</h2>
 <ul>
 <li>
@@ -2006,7 +2882,7 @@ and every time you commit, it moves forward automatically</li>
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.tracking", "navigation.sections"], "search": "../assets/javascripts/workers/search.5bf1dace.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version.title": "Select version"}}</script>
     
     
       <script src="../assets/javascripts/bundle.37e9125f.min.js"></script>
