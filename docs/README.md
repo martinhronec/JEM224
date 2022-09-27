@@ -20,6 +20,5 @@
         * team size TBD after number of *committed* students stabilizes 
     * development should be with frequent committing, branching and in collaboration with your colleagues
     * grading will be done based both on the contents of the repo as well as your collaboration and proper usage of Git & GitHub
-
-Deadline is 17th of September.
-    * topics to choose from can be found [here](final_project_topics.md)
+    * Deadline is 17th of October
+        * topics to choose from can be found [here](final_project_topics.md)
