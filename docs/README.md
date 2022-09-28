@@ -8,12 +8,8 @@
 ## Requirements
 
 * **Activity** - 10 points
-* **Quiz** - 10 points
-    * Thursday (29th) 9am
-    * multiple choice
-    * 20 minutes
-* **Final Exam** - 40 points
-    * Friday (30th) - after lunch (13:30)
+* **Final Exam** - 50 points
+    * Friday (30th) - 09:00
 
 * **Project** - 40 points
     * Build "wiki"-like repository through collaboration with your fellow students using workflows we covered
