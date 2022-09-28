@@ -16,14 +16,12 @@
 |------|-------|---------------|
 | 28th | -     | STATE HOLIDAY |
 |------|-------|---------------|
-| 29th | 09:00 | Quiz          |
-|      | 09:20 | Coffee break  |
-|      | 09:30 | Part 6        |
+| 29th | 09:00 | Seminar 6     |
 |      | 10:20 | Coffee break  |
-|      | 10:30 | Part 6 - cont. 
+|      | 10:30 | Part 6        |
 |      | 11:50 | Lunch break   |
-|      | 13:30 | Seminar 3     |
+|      | 13:30 | Interactive project work |
 |------|-------|---------------|
-| 30th | 09:00 | Interactive project work|
-|      | 11:50 | Lunch break   |
-|      | 13:30 | Final Exam    |
+| 30th | 09:00 | Final exam    |
+|      | 10:30 | Interactive project work|
+|      | 11:50 | End           |

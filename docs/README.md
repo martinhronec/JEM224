@@ -1,5 +1,5 @@
-# Version control with Git (JEM224)
 
+# Version control with Git (JEM224) 
 * by **Martin Hronec**
 * from **Sep 26th to Sep 30th** (28th - state holiday)
     * 26th & 27the ONLINE ONLY! (health issues)
@@ -8,12 +8,8 @@
 ## Requirements
 
 * **Activity** - 10 points
-* **Quiz** - 10 points
-    * Thursday (29th) 9am
-    * multiple choice
-    * 20 minutes
-* **Final Exam** - 40 points
-    * Friday (30th) - after lunch (13:30)
+* **Final Exam** - 50 points
+    * Friday (30th) - 09:00
 
 * **Project** - 40 points
     * Build "wiki"-like repository through collaboration with your fellow students using workflows we covered
@@ -22,3 +18,4 @@
     * grading will be done based both on the contents of the repo as well as your collaboration and proper usage of Git & GitHub
     * Deadline is 17th of October
         * topics to choose from can be found [here](final_project_topics.md)
+
