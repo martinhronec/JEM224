@@ -1,15 +1,13 @@
 
 # Version control with Git (JEM224) 
 * by **Martin Hronec**
-* from **Sep 26th to Sep 30th** (28th - state holiday)
-    * 26th & 27the ONLINE ONLY! (health issues)
-        * [link](https://teams.microsoft.com/l/meetup-join/19%3ameeting_YjEzNDc0NTItNGIzMS00MWQ0LTgzNTUtZGEwMDU0MDQxNGM2%40thread.v2/0?context=%7b%22Tid%22%3a%22e09276da-f934-4086-bf08-8816a20414a2%22%2c%22Oid%22%3a%2263944b03-e777-4f51-b072-591ecb9d0b83%22%7d) to lectures and seminars.
+* from **Sep 25th to Sep 29th** (28th - state holiday)
 
 ## Requirements
 
 * **Activity** - 10 points
 * **Final Exam** - 50 points
-    * Friday (30th) - 09:00
+    * Friday (29th) - 09:00
 
 * **Project** - 40 points
     * Build "wiki"-like repository through collaboration with your fellow students using workflows we covered
