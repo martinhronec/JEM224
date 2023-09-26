@@ -14,7 +14,16 @@
     * Files containing `_test` in root directory of your repository.
     * Any files with `6, 9, 1` as 2nd character.
 10. Demonstrate 3 types of resets.
-11. Prepare one question regarding your repo, which can be answered by looking at your git log.
+11. Create new branch called dev pointing to the same commit as main.
+12. Create additional branch called hotfix.
+13. Delete hotfix branch.
+14. Demonstrate 3 types of merging strategies:
+    * fast-forward
+    * recursive
+    * 3-way with conflict
+15. Create another branch starting from the 1st commit in your repository.
+
+! don't delete the repository after you are finished!
 
 ## Seminar 2
 
