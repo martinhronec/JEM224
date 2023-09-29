@@ -3,6 +3,9 @@
 * by **Martin Hronec**
 * from **Sep 25th to Sep 29th** (28th - state holiday)
 
+## Final exam
+https://forms.gle/jf3v3SUT5ZqsCMWt5
+
 ## Requirements
 
 * **Activity** - 10 points
