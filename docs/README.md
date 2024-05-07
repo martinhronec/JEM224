@@ -1,16 +1,13 @@
 
 # Version control with Git (JEM224) 
 * by **Martin Hronec**
-* from **Sep 25th to Sep 29th** (28th - state holiday)
-
-## Final exam
-https://forms.gle/d7JK39PgQS7K1SZ1A
+* from **Sep 18th to Sep 19th** 
 
 ## Requirements
 
 * **Activity** - 10 points
 * **Final Exam** - 50 points
-    * Friday (29th) - 09:00
+    * Friday (20th) - 09:00
 
 * **Project** - 40 points
     * Build "wiki"-like repository through collaboration with your fellow students using workflows we covered
